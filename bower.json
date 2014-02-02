@@ -1,0 +1,21 @@
+{
+  "name": "p-fiddle",
+  "version": "0.0.0",
+  "authors": [
+    "Matthew Phillips <matthew@matthewphillips.info>"
+  ],
+  "description": "Fiddle thingy",
+  "main": "lib/fiddle.js",
+  "keywords": [
+    "fiddle",
+    "webcomponent"
+  ],
+  "license": "Apache2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

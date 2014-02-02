@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <title>p-fiddle test</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <script type="text/mustache" id="test">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+    <p-fiddle>
+      <p-html>
+        <strong>It worked!</strong>
+      </p-html>
+    </p-fiddle>
+    </div>
+    </div>
+    </div>
+  </script>
+  <div class="app" style="margin-top: 30px;">Hello world!</div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+  <script src="//canjs.com/release/2.0.4/can.jquery.js"></script>
+  <script src="system.js"></script>
+  <script src="config.js"></script>
+  <script>
+    System.import('app');
+  </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "main": null,
+  "directories": {
+    "lib": "lib",
+    "dist": "dist"
+  },
+  "configFile": "config.js",
+  "registry": "jspm"
+}
