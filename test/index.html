@@ -2,7 +2,10 @@
 <html>
 <head>
   <title>p-fiddle test</title>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+  <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">-->
+  <link href="//netdna.bootstrapcdn.com/bootswatch/3.0.3/yeti/bootstrap.min.css" rel="stylesheet">
+    <link href="/dist/fiddle.css" rel="stylesheet">
+    <link href="http://codemirror.net/theme/twilight.css" rel="stylesheet">
 </head>
 <body>
   <script type="text/mustache" id="test">
@@ -13,6 +16,16 @@
       <p-html>
         <strong>It worked!</strong>
       </p-html>
+      <p-js>
+var addOne = function(num) {
+  return 1 + num;
+};
+      </p-js>
+      <p-css>
+        strong {
+          color: 'green';
+        }
+      </p-css>
     </p-fiddle>
     </div>
     </div>
