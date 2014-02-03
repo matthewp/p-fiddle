@@ -21,10 +21,9 @@
   <div class="app" style="margin-top: 30px;">Hello world!</div>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
   <script src="//canjs.com/release/2.0.4/can.jquery.js"></script>
-  <script src="system.js"></script>
-  <script src="config.js"></script>
+  <script src="/dist/fiddle.js"></script>
   <script>
-    System.import('app');
+    $('.app').html(can.view('test', {}));
   </script>
 </body>
 </html>

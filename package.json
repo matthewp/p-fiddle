@@ -1,0 +1,29 @@
+{
+  "name": "p-fiddle",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "gulp": "~3.5.1",
+    "gulp-traceur": "~0.1.2",
+    "gulp-browserify": "~0.4.1",
+    "gulp-util": "~2.2.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/matthewp/p-fiddle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthewp/p-fiddle/issues"
+  },
+  "homepage": "https://github.com/matthewp/p-fiddle"
+}
