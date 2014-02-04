@@ -10,25 +10,39 @@
 <body>
   <script type="text/mustache" id="test">
     <div class="container">
-    <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-    <p-fiddle>
-      <p-html>
-        <strong>It worked!</strong>
-      </p-html>
-      <p-js>
-var addOne = function(num) {
-  return 1 + num;
-};
-      </p-js>
-      <p-css>
-        strong {
-          color: green;
-        }
-      </p-css>
-    </p-fiddle>
-    </div>
-    </div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+        <p-fiddle>
+          <p-html>
+            <strong>it worked</strong>
+          </p-html>
+          <p-js>
+            var addOne = function(num) {
+              return 1 + num;
+            };
+
+            can.Component.extend({
+              tag: 'the-result',
+              template: '<strong>{{result}}</strong>',
+              scope: {
+                num: '@',
+                result: can.compute(function() {
+                  var num = +this.attr('num');
+                  return addOne(num);
+                })
+              }
+            });
+
+            $('#main').html(can.view('tmpl')({}));
+          </p-js>
+          <p-css>
+            strong {
+              color: green;
+            }
+          </p-css>
+        </p-fiddle>
+        </div>
+      </div>
     </div>
   </script>
   <div class="app" style="margin-top: 30px;">Hello world!</div>
@@ -38,5 +52,10 @@ var addOne = function(num) {
   <script>
     $('.app').html(can.view('test', {}));
   </script>
+
+
+  <script type="text">
+  </script>
+
 </body>
 </html>

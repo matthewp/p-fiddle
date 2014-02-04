@@ -2,6 +2,9 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var browserify = require('gulp-browserify');
 var concat = require('gulp-concat');
+var es = require('event-stream');
+var less = require('gulp-less');
+var path = require('path');
 var serve = require('gulp-serve');
 var str2jsify = require('string-to-jsify');
 var traceur = require('gulp-traceur');
@@ -53,7 +56,11 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('styles', function() {
-  gulp.src(['bower_components/codemirror/lib/codemirror.css'])
+  var css = gulp.src(['bower_components/codemirror/lib/codemirror.css']);
+  var lesscss = gulp.src('style/**/*.less')
+  .pipe(less());
+
+  es.merge(css, lesscss)
     .pipe(concat('fiddle.css'))
     .pipe(gulp.dest('dist'));
 });
@@ -64,8 +71,11 @@ gulp.task('serve', serve({
 }));
 
 gulp.task('watch', function() {
-  var files = ['lib/**/*.js', 'lib/**/*.mustache'];
-  gulp.watch(files, ['es6', 'templates', 'scripts']);
+  var scripts = ['lib/**/*.js', 'lib/**/*.mustache'];
+  gulp.watch(scripts, ['es6', 'templates', 'scripts']);
+
+  gulp.watch('style/**/*.less', ['styles']);
 });
 
-gulp.task('default', ['es6', 'templates', 'scripts', 'watch', 'serve']);
+gulp.task('default', ['es6', 'templates', 'scripts', 'styles',
+          'watch', 'serve']);
