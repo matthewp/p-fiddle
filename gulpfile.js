@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var browserify = require('gulp-browserify');
-var clean = require('gulp-clean');
 var concat = require('gulp-concat');
+var serve = require('gulp-serve');
 var str2jsify = require('string-to-jsify');
 var traceur = require('gulp-traceur');
 
@@ -49,7 +49,6 @@ gulp.task('scripts', function() {
       }
     }))
     .pipe(concat('fiddle.js'))
-    .pipe(clean({force:true}))
     .pipe(gulp.dest('dist'));
 });
 
@@ -59,8 +58,13 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('serve', serve({
+  root: [__dirname],
+  port: 7000
+}));
+
 gulp.task('watch', function() {
   gulp.watch('lib/**/*.js', ['es6', 'templates', 'scripts']);
 });
 
-gulp.task('default', ['es6', 'templates', 'scripts', 'watch']);
+gulp.task('default', ['es6', 'templates', 'scripts', 'watch', 'serve']);
