@@ -64,7 +64,8 @@ gulp.task('serve', serve({
 }));
 
 gulp.task('watch', function() {
-  gulp.watch('lib/**/*.js', ['es6', 'templates', 'scripts']);
+  var files = ['lib/**/*.js', 'lib/**/*.mustache'];
+  gulp.watch(files, ['es6', 'templates', 'scripts']);
 });
 
 gulp.task('default', ['es6', 'templates', 'scripts', 'watch', 'serve']);

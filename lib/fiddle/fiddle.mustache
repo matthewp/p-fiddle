@@ -3,5 +3,7 @@
     <content/>
   </div>
   <p-tabs tabs="tabs" active="active"></p-tabs>
-  <div class="p-content"></div>
+  <div class="p-content{{#if isResult}} hidden{{/if}}"></div>
+  <p-result class="{{^if isResult}} hidden{{/if}}" html="html" css="css" js="js" selected="isResult"></p-result>
+
 </div>
