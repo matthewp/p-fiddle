@@ -1,13 +1,24 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var browserify = require('gulp-browserify');
+var clean = require('gulp-clean');
 var concat = require('gulp-concat');
 var str2jsify = require('string-to-jsify');
 var traceur = require('gulp-traceur');
 
-gulp.task('scripts', function() {
-  gulp.src('lib/fiddle.js')
+gulp.task('es6', function() {
+  gulp.src('lib/**/*.js')
     .pipe(traceur())
+    .pipe(gulp.dest('tmp'));
+});
+
+gulp.task('templates', function() {
+  gulp.src('lib/**/*.mustache')
+    .pipe(gulp.dest('tmp'));
+});
+
+gulp.task('scripts', function() {
+  gulp.src('tmp/index.js')
     .pipe(browserify({
       debug: true,
       transform: [
@@ -17,7 +28,7 @@ gulp.task('scripts', function() {
       shim: {
         'codemirror': {
           path: 'bower_components/codemirror/lib/codemirror.js',
-          exports: 'CodeMirror',
+          exports: 'CodeMirror'
         },
         'xmlmode': {
           path: 'bower_components/codemirror/mode/xml/xml.js',
@@ -37,6 +48,8 @@ gulp.task('scripts', function() {
         }
       }
     }))
+    .pipe(concat('fiddle.js'))
+    .pipe(clean({force:true}))
     .pipe(gulp.dest('dist'));
 });
 
@@ -47,7 +60,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('lib/**/*.js', ['scripts']);
+  gulp.watch('lib/**/*.js', ['es6', 'templates', 'scripts']);
 });
 
-gulp.task('default', ['scripts', 'watch']);
+gulp.task('default', ['es6', 'templates', 'scripts', 'watch']);
