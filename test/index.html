@@ -8,54 +8,47 @@
     <link href="http://codemirror.net/theme/twilight.css" rel="stylesheet">
 </head>
 <body>
-  <script type="text/mustache" id="test">
+  <div class="app" style="margin-top: 30px;">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-        <p-fiddle>
-          <p-html>
-          temp
-          </p-html>
-          <p-js>
-            var addOne = function(num) {
-              return 1 + num;
-            };
+        <div id="main" class="col-md-8 col-md-offset-2">
+          <p-fiddle>
+            <p-html>
+              <script type="text/mustache" id="tmpl">
+                <the-result num="5"></the-result>
+              </script>
+            </p-html>
+            <p-js>
+              var addOne = function(num) {
+                return 1 + num;
+              };
 
-            can.Component.extend({
-              tag: 'the-result',
-              template: '<strong>{{result}}</strong>',
-              scope: {
-                num: '@',
-                result: can.compute(function() {
-                  var num = +this.attr('num');
-                  return addOne(num);
-                })
+              can.Component.extend({
+                tag: 'the-result',
+                template: '<strong>{{result}}</strong>',
+                scope: {
+                  num: '@',
+                  result: can.compute(function() {
+                    var num = +this.attr('num');
+                    return addOne(num);
+                  })
+                }
+              });
+
+              $('#main').html(can.view('tmpl',{}));
+            </p-js>
+            <p-css>
+              strong {
+                color: green;
               }
-            });
-
-            $('#main').html(can.view('tmpl',{}));
-          </p-js>
-          <p-css>
-            strong {
-              color: green;
-            }
-          </p-css>
-        </p-fiddle>
+            </p-css>
+          </p-fiddle>
         </div>
       </div>
     </div>
-  </script>
-  <div class="app" style="margin-top: 30px;">Hello world!</div>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script src="//canjs.com/release/2.0.4/can.jquery.js"></script>
   <script src="/dist/fiddle.js"></script>
-  <script>
-    $('.app').html(can.view('test', {}));
-  </script>
-
-
-  <script type="text">
-  </script>
-
 </body>
 </html>
